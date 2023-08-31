@@ -1,0 +1,46 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ordersfavorites-app
+  annotations:
+    argocd/app-name: ordersfavorites-app
+    backstage.io/kubernetes-id: ordersfavorites-app
+    backstage.io/kubernetes-namespace: devhub
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: devhub-mad/ordersfavorites-app
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - java
+    - quarkus
+    - maven
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.cluster-wk7fv.wk7fv.sandbox847.opentlc.com/dev-pipelines/ns/devhub/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.cluster-wk7fv.wk7fv.sandbox847.opentlc.com/k8s/ns/devhub/deployments/ordersfavorites-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.cluster-wk7fv.wk7fv.sandbox847.opentlc.com/#https://github.com/devhub-mad/ordersfavorites-app?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/varodrig"
+  system: workshop-system-ordersfavorites-app
+  providesApis:
+    - backend-api-devhub
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-ordersfavorites-app
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+spec:
+  owner: "user:default/varodrig"
+
